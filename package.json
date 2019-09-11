@@ -1,0 +1,25 @@
+{
+  "name": "sorting_app",
+  "version": "1.0.0",
+  "description": "Sorting application",
+  "main": "app.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inka3inka/Sorting_App.git"
+  },
+  "author": "Paulina Kaczanowska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inka3inka/Sorting_App/issues"
+  },
+  "homepage": "https://github.com/inka3inka/Sorting_App#readme"
+}
