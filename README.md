@@ -1,2 +1,2 @@
 # Sorting_App
-Sorting aplication
+Sorting application
