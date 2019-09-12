@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let buttonClear = document.querySelector('.btn-clear');
     let area = document.querySelector('.area');
 
-
+    //Sortowanie
     buttonSort.addEventListener('click', function(){
         area.innerText = area.value;
         let arrayOfStrings = area.value.split(/\r\n|\n|\r/);
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
         area.value = sortedArray.join("\n");
     });
 
+    //Shuffle
     buttonShuffle.addEventListener('click', function(){
         area.innerText = area.value;
         let arrayOfStrings = area.value.split(/\r\n|\n|\r/);
@@ -26,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function(){
             }
             return array;
         }
-        console.log(shuffler(arrayOfStrings));
         area.value = arrayOfStrings.join("\n");
     });
 
+    //Clear
     buttonClear.addEventListener('click', function(){
         area.value = '';
     })
