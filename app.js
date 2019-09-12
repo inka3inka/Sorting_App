@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function(){
             }
             return array;
         }
+        shuffler(arrayOfStrings);
         area.value = arrayOfStrings.join("\n");
     });
 
