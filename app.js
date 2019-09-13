@@ -1,32 +1,42 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    let buttonSort = document.querySelector('.btn-sorting');
-    let buttonShuffle = document.querySelector('.btn-shuffle');
-    let buttonRestore = document.querySelector('.btn-restore');
-    let buttonClear = document.querySelector('.btn-clear');
-    let area = document.querySelector('.area');
+//Variables
+    const buttonSort = document.querySelector('.btn-sorting');
+    const buttonShuffle = document.querySelector('.btn-shuffle');
+    const buttonRestore = document.querySelector('.btn-restore');
+    const buttonClear = document.querySelector('.btn-clear');
+    const area = document.querySelector('.area');
 
-    //Sortowanie
-    buttonSort.addEventListener('click', function(){
+//Functions
+    //Function for shufflering
+    function shuffler(array) {
+        for (let i = 0; i < array.length; i++) {
+            const j = Math.floor(Math.random() * (array.length - 1));
+            const x = array[i];
+            array[i] = array[j];
+            array[j] = x;
+        }
+        return array;
+    }
+
+    //Function for adding textarea lines to HTML as an innertext
+    function valueImplementation() {
         area.innerText = area.value;
-        let arrayOfStrings = area.value.split(/\r\n|\n|\r/);
-        let sortedArray = arrayOfStrings.sort();
+    }
+
+//Features
+    //Sort
+    buttonSort.addEventListener('click', function(){
+        valueImplementation();
+        const arrayOfStrings = area.value.split(/\r\n|\n|\r/);
+        const sortedArray = arrayOfStrings.sort();
         area.value = sortedArray.join("\n");
     });
 
     //Shuffle
     buttonShuffle.addEventListener('click', function(){
-        area.innerText = area.value;
-        let arrayOfStrings = area.value.split(/\r\n|\n|\r/);
-        function shuffler(array) {
-            for (let i = 0; i < array.length; i++) {
-                let j = Math.floor(Math.random() * (array.length - 1));
-                let x = array[i];
-                array[i] = array[j];
-                array[j] = x;
-            }
-            return array;
-        }
+        valueImplementation();
+        const arrayOfStrings = area.value.split(/\r\n|\n|\r/);
         shuffler(arrayOfStrings);
         area.value = arrayOfStrings.join("\n");
     });
