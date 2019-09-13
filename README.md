@@ -9,7 +9,7 @@ Sorting application
 * [Sources](#sources)
 
 ## General info
-This project is simple sorting alphabetically application.
+This project is a simple sorting alphabetically application.
 
 ## Technologies
 Project is created with:

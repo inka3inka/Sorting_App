@@ -57,5 +57,22 @@ body {
 }
 
 ::selection {
-  background-color: lightgrey;
+  background-color: #d3d3d3;
+}
+
+.checkbox {
+  font-size: 1rem;
+  color: #d3d3d3;
+  width: 70%;
+  text-align: center;
+  margin-left: 1vw;
+  cursor: pointer;
+  position: relative;
+    input {
+      position: absolute;
+      left: -2.3vw;
+      top: -.2vw;
+      width: 1.5vw;
+      height: 1.5vw
+    }
 }
