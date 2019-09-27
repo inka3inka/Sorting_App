@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const buttonClear = document.querySelector('.btn-clear');
     const area = document.querySelector('.area');
     const checkboxPosition = document.querySelector('.checkbox input');
+    let restored;
 
 
 //Functions//
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //Function for sorting and changing sorted array to string
     function sortAndPrint(array) {
         const sortedArray = array.sort();
-        area.value = sortedArray.join("\n");
+        area.value = sortedArray.join("\n")
     }
 
     //Function for shufflering
@@ -39,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
+    //Memorize first added text
+    area.addEventListener('change', function(){
+        restored = area.value;
+    });
+
 
 //Features//
     //Sort
@@ -48,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
         /*Trimmer*/
         if (checkboxPosition['checked'] === true) {
             trimmer(arrayOfStrings);
-            sortAndPrint(arrayOfStrings)
+            sortAndPrint(arrayOfStrings);
         }
         /*Casual sorting*/
         else {
@@ -66,11 +72,51 @@ document.addEventListener('DOMContentLoaded', function(){
 
     //Restore
     buttonRestore.addEventListener('click', function() {
+        area.value = restored;
     });
 
     //Clear
     buttonClear.addEventListener('click', function(){
         area.value = '';
     });
+
+    //Set event listeners
+    area.addEventListener('dragover', dragover);
+    area.addEventListener('dragenter', dragenter);
+    area.addEventListener('drop', readText, false);
+
+    function dragover(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        return false;
+    }
+
+    function dragenter(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        return false;
+    }
+
+    function readText(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        const files = event.dataTransfer.files;
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            const fileReader = new FileReader();
+            fileReader.textArea = area;
+
+            const fileData = function() {
+                this.textArea.value += this.result;
+            };
+            fileReader.addEventListener('loaded', fileData);
+            fileReader.readAsText(file);
+        }
+    }
+
 });
+
+
 
