@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const buttonRestore = document.querySelector('.btn-restore');
     const buttonClear = document.querySelector('.btn-clear');
     const area = document.querySelector('.area');
+    const checkboxPosition = document.querySelector('.checkbox input');
     const dropZone = document.querySelector('#drop-zone');
     let restored;
 
@@ -18,7 +19,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     //Function for sorting and changing sorted array to string
     function sortAndPrint(array) {
-        const sortedArray = array.sort();
+        const sortedArray = array.sort(function(a,b){
+            return a.localeCompare(b);
+        });
         area.value = sortedArray.join("\n")
     }
 
@@ -41,21 +44,25 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     // Drop function
-    // dropZone.addEventListener('drop', function(event) {
-    //     event.stopPropagation();
-    //     event.preventDefault();
-    //     const fileToRead = event.dataTransfer.files[0];
-    //     const fileReader = new FileReader();
-    //     fileReader.onload = function(ev){
-    //         area.value = ev.target.result
-    //     };
-    //     area.value = fileReader.readAsText(fileToRead);
-    // });
+    dropZone.addEventListener('drop', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        const fileToRead = event.dataTransfer.files[0];
+        const fileReader = new FileReader();
+        fileReader.onload = function(ev){
+            area.value = ev.target.result
+        };
+        area.value = fileReader.readAsText(fileToRead);
+        fileReader.addEventListener('load', function(){
+            restored = area.value;
+        });
+    });
 
     //Memorize first added text
     area.addEventListener('change', function(){
         restored = area.value;
     });
+
 
 
 //Features//
