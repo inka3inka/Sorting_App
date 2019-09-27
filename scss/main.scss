@@ -42,6 +42,11 @@ body {
     font-family: 'Roboto Mono', monospace;
     border-radius: 5px
   }
+  #drop-zone {
+    border: 5px solid blue;
+    width:  200px;
+    height: 100px;
+  }
 }
 
 .btn {

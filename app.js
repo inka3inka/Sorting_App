@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const buttonRestore = document.querySelector('.btn-restore');
     const buttonClear = document.querySelector('.btn-clear');
     const area = document.querySelector('.area');
-    const checkboxPosition = document.querySelector('.checkbox input');
+    const dropZone = document.querySelector('#drop-zone');
     let restored;
 
 
@@ -40,6 +40,18 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
+    // Drop function
+    // dropZone.addEventListener('drop', function(event) {
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     const fileToRead = event.dataTransfer.files[0];
+    //     const fileReader = new FileReader();
+    //     fileReader.onload = function(ev){
+    //         area.value = ev.target.result
+    //     };
+    //     area.value = fileReader.readAsText(fileToRead);
+    // });
+
     //Memorize first added text
     area.addEventListener('change', function(){
         restored = area.value;
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function(){
         /*Trimmer*/
         if (checkboxPosition['checked'] === true) {
             trimmer(arrayOfStrings);
-            sortAndPrint(arrayOfStrings);
+            sortAndPrint(arrayOfStrings)
         }
         /*Casual sorting*/
         else {
@@ -79,42 +91,6 @@ document.addEventListener('DOMContentLoaded', function(){
     buttonClear.addEventListener('click', function(){
         area.value = '';
     });
-
-    //Set event listeners
-    area.addEventListener('dragover', dragover);
-    area.addEventListener('dragenter', dragenter);
-    area.addEventListener('drop', readText, false);
-
-    function dragover(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        return false;
-    }
-
-    function dragenter(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        return false;
-    }
-
-    function readText(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        const files = event.dataTransfer.files;
-
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-
-            const fileReader = new FileReader();
-            fileReader.textArea = area;
-
-            const fileData = function() {
-                this.textArea.value += this.result;
-            };
-            fileReader.addEventListener('loaded', fileData);
-            fileReader.readAsText(file);
-        }
-    }
 
 });
 
