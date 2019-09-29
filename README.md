@@ -18,9 +18,10 @@ Project is created with:
 * gulp.js
 
 ## Features
-* Add a random text to textarea. You can enter (or paste) lines of text.
-* Press SORT Button to sort alphabetically text entered to textarea.
+* Add a random text to textarea. You can enter (or paste) lines of text or drop a text file.
+* Press SORT Button to sort alphabetically text entered to textarea. If you want, you can ignore white spaces at the beggining of the line.
 * Press SHUFFLE Button to shuffle the lines.
+* Press RESTORE Button to back to the first time entered text.
 * Press CLEAR Button to clear all the lines.
 
 ## Setup

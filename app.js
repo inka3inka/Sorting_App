@@ -45,14 +45,18 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Drop function
     dropZone.addEventListener('drop', function(event) {
+        //Stop default events
         event.stopPropagation();
         event.preventDefault();
+        //Get file
         const fileToRead = event.dataTransfer.files[0];
+        //Read file
         const fileReader = new FileReader();
         fileReader.onload = function(ev){
             area.value = ev.target.result
         };
         area.value = fileReader.readAsText(fileToRead);
+        //Restore added file
         fileReader.addEventListener('load', function(){
             restored = area.value;
         });
