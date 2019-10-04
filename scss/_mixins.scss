@@ -1,9 +1,16 @@
-@mixin button-sort {
+@mixin media-mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin button {
   width: 50%;
   height: 5vw;
   margin: 2vw;
   font-size: 1.2rem;
   font-weight: 700;
+  text-transform: uppercase;
   border-radius: 5px;
   -moz-box-shadow:inset 0 1px 0 0 #ffffff;
   -webkit-box-shadow:inset 0 1 0 0 #ffffff;
@@ -24,6 +31,14 @@
   color:#666666;
   text-decoration:none;
   text-shadow:0 1px 0 #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  @include media-mobile {
+    width: 20%;
+    height: 7vw;
+    font-size: 1rem;
+  }
 }
 
 @mixin button-hover {
@@ -41,3 +56,4 @@
   position:relative;
   top:5px;
 }
+

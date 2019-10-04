@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="app.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700&display=swap" rel="stylesheet">
 </head>
@@ -12,14 +13,14 @@
     <header class="header"></header>
     <article class="container">
         <section class="container container-btns">
-            <button class="btn btn-sorting">SORT</button>
-            <label class="checkbox"><input type="checkbox" checked>Ignore starting white-space in the lines</label>
-            <button class="btn btn-shuffle">SHUFFLE</button>
-            <button class="btn btn-restore">RESTORE</button>
-            <button class="btn btn-clear">CLEAR</button>
+            <button class="btn btn-sorting">Sort</button>
+            <label class="checkbox"><input type="checkbox" checked="checked">Ignore white-spaces</label>
+            <button class="btn btn-shuffle">Shuffle</button>
+            <button class="btn btn-restore">Restore</button>
+            <button class="btn btn-clear">Clear</button>
         </section>
         <section class="container container-text">
-            <textarea spellcheck=false placeholder="Add text or drop a text file" id="drop-zone" class="area"></textarea>
+            <textarea placeholder="Add text or drop a text file" class="zone"></textarea>
         </section>
     </article>
     <footer class="footer"></footer>

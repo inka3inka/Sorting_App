@@ -5,16 +5,15 @@ document.addEventListener('DOMContentLoaded', function(){
     const buttonShuffle = document.querySelector('.btn-shuffle');
     const buttonRestore = document.querySelector('.btn-restore');
     const buttonClear = document.querySelector('.btn-clear');
-    const area = document.querySelector('.area');
+    const zone = document.querySelector('.zone');
     const checkboxPosition = document.querySelector('.checkbox input');
-    const dropZone = document.querySelector('#drop-zone');
     let restored;
 
 
 //Functions//
     //Function for adding textarea lines to HTML as an innertext
     function valueImplementation() {
-        area.innerText = area.value;
+        zone.innerText = zone.value;
     }
 
     //Function for sorting and changing sorted array to string
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const sortedArray = array.sort(function(a,b){
             return a.localeCompare(b);
         });
-        area.value = sortedArray.join("\n")
+        zone.value = sortedArray.join("\n")
     }
 
     //Function for shufflering
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     // Drop function
-    dropZone.addEventListener('drop', function(event) {
+    zone.addEventListener('drop', function(event) {
         //Stop default events
         event.stopPropagation();
         event.preventDefault();
@@ -53,18 +52,18 @@ document.addEventListener('DOMContentLoaded', function(){
         //Read file
         const fileReader = new FileReader();
         fileReader.onload = function(ev){
-            area.value = ev.target.result
+            zone.value = ev.target.result
         };
-        area.value = fileReader.readAsText(fileToRead);
+        zone.value = fileReader.readAsText(fileToRead);
         //Restore added file
         fileReader.addEventListener('load', function(){
-            restored = area.value;
+            restored = zone.value;
         });
     });
 
     //Memorize first added text
-    area.addEventListener('change', function(){
-        restored = area.value;
+    zone.addEventListener('change', function(){
+        restored = zone.value;
     });
 
 
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //Sort
     buttonSort.addEventListener('click', function(){
         valueImplementation();
-        const arrayOfStrings = area.value.split(/\r\n|\n|\r/);
+        const arrayOfStrings = zone.value.split(/\r\n|\n|\r/);
         /*Trimmer*/
         if (checkboxPosition['checked'] === true) {
             trimmer(arrayOfStrings);
@@ -88,19 +87,19 @@ document.addEventListener('DOMContentLoaded', function(){
     //Shuffle
     buttonShuffle.addEventListener('click', function(){
         valueImplementation();
-        const arrayOfStrings = area.value.split(/\r\n|\n|\r/);
+        const arrayOfStrings = zone.value.split(/\r\n|\n|\r/);
         shuffler(arrayOfStrings);
-        area.value = arrayOfStrings.join("\n");
+        zone.value = arrayOfStrings.join("\n");
     });
 
     //Restore
     buttonRestore.addEventListener('click', function() {
-        area.value = restored;
+        zone.value = restored;
     });
 
     //Clear
     buttonClear.addEventListener('click', function(){
-        area.value = '';
+        zone.value = '';
     });
 
 });
